@@ -58,5 +58,3 @@ window.onload = function () {
   
 
 }
-/* apply to all changed properties */
-transition: all;
