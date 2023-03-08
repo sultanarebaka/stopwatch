@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-    <html>
+<html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Stopwatch</title>
+    <link rel="stylesheet" href="styles.css"/>
+    </head>
     <style>
-body{
+        body{
     background:#9AE17B;
     font-family: Arial, Helvetica, sans-serif;
     height:100%;
+    margin-left: 333px;
 }
 .container{
     width: 888px;
-    margin: 38px auto;
     text-align: center;
     align-items: center;
+    overflow: hidden;
 }
 h1{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 100;
-    font-size: 2.6rem;
+    font-size: 2.8rem;
     text-decoration: wavy;
     text-align: center;
     font-style: inherit;
-    padding-top: 15vh;
-    padding-right: 50px;
+    padding-top: 14vh;
+    padding-right: 380px;
     margin: 0;
 }
 h2{
@@ -38,14 +41,16 @@ h2{
     text-align: center;
     font-style:inherit;
     word-spacing: 12px;
+    padding-right: 340px;
+    padding-top: 0.1vh;
 }
 p{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 100;
     text-align: center;
-    padding-top: 5vh;
-    padding-right: 40px;
-    padding-bottom: 15px;
+    padding-top: 6vh;
+    padding-right: 370px;
+    padding-bottom: 1px;
 }
 
 #seconds,
@@ -59,7 +64,7 @@ button{
     border:1px solid white;
     border-radius: 5px;
     font-size: 1.5em;
-    margin: 10px;
+    margin:9px  6px;
     cursor: pointer;
     display: inline-block;
     background-position: center;
@@ -67,8 +72,7 @@ button{
     text-transform: capitalize;
     align-items: center;
     text-align: center;
-    background-position-x: center;
- 
+    cursor: default;
 }
 button:hover{
     background: white;
@@ -76,17 +80,21 @@ button:hover{
     transition: all .6s ease-in-out;
  
 }
-       </style>
-    </head>
 
-<body>
-<div class="button">
+
+    </style>
+
+
+    <body>
+
+        <div class="buttons">
     <h1>StopWatch</h1>
     <h2>Vanilla Javascript Stopwatch</h2>
     <p><span id="seconds">00</span>:<span id="tens">00</span></p>
     <button id="button-start">Start</button>
     <button id="button-stop">Stop</button>
     <button id="button-reset">Reset</button>
+    <script src="script.js"></script>
     </div> 
     </body>
-    </html>
+</html>
