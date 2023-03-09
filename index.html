@@ -6,21 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Stopwatch</title>
-    <link rel="stylesheet" href="styles.css"/>
     </head>
     <style>
         body{
     background:#9AE17B;
     font-family: Arial, Helvetica, sans-serif;
     height:100%;
-    margin-left: 333px;
+    padding-left: 333px;
 }
-.container{
-    width: 888px;
-    text-align: center;
-    align-items: center;
-    overflow: hidden;
-}
+
 h1{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 100;
@@ -48,7 +42,7 @@ p{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 100;
     text-align: center;
-    padding-top: 6vh;
+    padding-top: 4vh;
     padding-right: 370px;
     padding-bottom: 1px;
 }
@@ -80,11 +74,7 @@ button:hover{
     transition: all .6s ease-in-out;
  
 }
-
-
     </style>
-
-
     <body>
 
         <div class="buttons">
@@ -94,7 +84,68 @@ button:hover{
     <button id="button-start">Start</button>
     <button id="button-stop">Stop</button>
     <button id="button-reset">Reset</button>
-    <script src="script.js"></script>
     </div> 
-    </body>
+    <script>
+window.onload = function () {
+  
+    var seconds = 00; 
+    var tens = 00; 
+    var appendTens = document.getElementById("tens")
+    var appendSeconds = document.getElementById("seconds")
+    var buttonStart = document.getElementById('button-start');
+    var buttonStop = document.getElementById('button-stop');
+    var buttonReset = document.getElementById('button-reset');
+    var Interval ;
+  
+    buttonStart.onclick = function() {
+      
+      clearInterval(Interval);
+       Interval = setInterval(startTimer, 10);
+    }
+    
+      buttonStop.onclick = function() {
+         clearInterval(Interval);
+    }
+    
+  
+    buttonReset.onclick = function() {
+       clearInterval(Interval);
+      tens = "00";
+        seconds = "00";
+      appendTens.innerHTML = tens;
+        appendSeconds.innerHTML = seconds;
+    }
+    
+     
+    
+    function startTimer () {
+      tens++; 
+      
+      if(tens <= 9){
+        appendTens.innerHTML = "0" + tens;
+      }
+      
+      if (tens > 9){
+        appendTens.innerHTML = tens;
+        
+      } 
+      
+      if (tens > 99) {
+        console.log("seconds");
+        seconds++;
+        appendSeconds.innerHTML = "0" + seconds;
+        tens = 0;
+        appendTens.innerHTML = "0" + 0;
+      }
+      
+      if (seconds > 9){
+        appendSeconds.innerHTML = seconds;
+      }
+    
+    }
+    
+  
+  }
+  </script>
+</body>
 </html>
