@@ -1,86 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Stopwatch</title>
+    <title>stopwatch</title>
     </head>
-    <style>
-        body{
-    background:#9AE17B;
-    font-family: Arial, Helvetica, sans-serif;
-    height:100%;
-    padding-left: 333px;
-}
+    <body>
+        <style>
+body{
+    background: #9AE17B;
+    font-family: helvetica,Arial,sans-serif;
+    height: 100%;
 
-h1{
+}
+.stopper{
+    width: 950px;
+    margin: 35px auto;
+    color:#fff;
+    text-align:center;
+
+}
+h1,h2{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 100;
-    font-size: 2.8rem;
-    text-decoration: wavy;
+    font-size: 2.8em;
     text-align: center;
-    font-style: inherit;
-    padding-top: 14vh;
-    padding-right: 380px;
+    color: black;
+    align-items: center;
+    flex-direction: column;
+    padding: 18px;
+    padding-right: 30px;
+    padding-bottom: 0px;
     margin: 0;
+    word-spacing: 12px;
+}
+h1{
+    padding-top: 15vh;
+    padding-right: 60px;
 }
 h2{
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 100;
-    font-size: 2.6rem;
-    text-transform: capitalize;
-    padding-bottom: 1px;
-    text-align: center;
-    font-style:inherit;
-    word-spacing: 12px;
-    padding-right: 340px;
-    padding-top: 0.1vh;
+    padding-top: 4vh;
+}
+#seconds,#tens{
+    font-size: 2em;
 }
 p{
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 100;
-    text-align: center;
-    padding-top: 4vh;
-    padding-right: 370px;
-    padding-bottom: 1px;
-}
-
-#seconds,
-#tens{
-    font-size: 1.9em;
+    padding-top: 8vh;
+    padding-right: 20px;
+    color: black;
 }
 button{
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    -khtml-border-radius:6px;
+    background: #6BBA62;
+    color:black;
+    border: solid 1px #fff;
+    cursor: pointer;
+    text-decoration: none;
     width: 185px;
     height: 75px;
-    background-color:#6BBA62;
-    border:1px solid white;
+    font-style: inherit;
+    padding: 17px 10px;
+    outline:none;
     border-radius: 5px;
     font-size: 1.5em;
     margin:9px  6px;
-    cursor: pointer;
     display: inline-block;
     background-position: center;
-    outline: none;
     text-transform: capitalize;
     align-items: center;
     text-align: center;
-    cursor: default;
 }
 button:hover{
-    background: white;
-    color: black;
-    transition: all .5s ease-in-out;
- 
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    background:#fff;
+    border: solid 1px #fff;
 }
 button:nth-last-child(2){
     background:#f8f988;
     border:1px solid white;
+    transition: all 0.5s ease-in-out;
 }
 button:nth-last-child(2):hover{
   background: white;
-  transition: all;
 }
 button:nth-last-child(1){
   background: #FF7000;
@@ -90,91 +97,59 @@ button:nth-last-child(1){
 button:nth-last-child(1):hover{
   background: white;
 }
-@media screen and (min-width:480px){
-  body{
-    background-position: center;
-    align-items: center;
-    flex-direction: column;
-    height:4vh;
-  }
+        </style>
+        <script>
+window.onload = function(){
+    var seconds=00;
+    var tens=00;
+    var appendTens = document.getElementById("tens");
+    var appendSeconds= document.getElementById("seconds");
+    var buttonStart = document.getElementById("button-start");
+    var buttonStop = document.getElementById("button-stop");
+    var buttonReset = document.getElementById("button-reset");
+    var interval;
+    buttonStart.onclick = function(){
+        interval = setInterval(startTimer,10);
 }
- button:hover{
-  transition: all 0.5s ease-in-out;
-  -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
+buttonStop.onclick = function(){
+    clearInterval(interval);
 }
-    </style>
-    <body>
-
-        <div class="buttons">
-    <h1>StopWatch</h1>
-    <h2>Vanilla Javascript Stopwatch</h2>
-    <p><span id="seconds">00</span>:<span id="tens">00</span></p>
-    <button id="button-start">Start</button>
-    <button id="button-stop">Stop</button>
-    <button id="button-reset">Reset</button>
-    </div> 
-    <script>
-window.onload = function () {
-  
-    var seconds = 00; 
-    var tens = 00; 
-    var appendTens = document.getElementById("tens")
-    var appendSeconds = document.getElementById("seconds")
-    var buttonStart = document.getElementById('button-start');
-    var buttonStop = document.getElementById('button-stop');
-    var buttonReset = document.getElementById('button-reset');
-    var Interval ;
-  
-    buttonStart.onclick = function() {
-      
-      clearInterval(Interval);
-       Interval = setInterval(startTimer, 10);
-    }
-    
-      buttonStop.onclick = function() {
-         clearInterval(Interval);
-    }
-    
-  
-    buttonReset.onclick = function() {
-       clearInterval(Interval);
-      tens = "00";
-        seconds = "00";
-      appendTens.innerHTML = tens;
-        appendSeconds.innerHTML = seconds;
-    }
-    
-     
-    
-    function startTimer () {
-      tens++; 
-      
-      if(tens <= 9){
+buttonReset.onclick = function(){
+    clearInterval(interval);
+    tens="00";
+    seconds="00";
+    appendSeconds.innerHTML=seconds;
+    appendTens.innerHTML = tens; 
+} 
+function startTimer(){
+    tens++;
+    if(tens<=9)
+    {
         appendTens.innerHTML = "0" + tens;
-      }
-      
-      if (tens > 9){
-        appendTens.innerHTML = tens;
-        
-      } 
-      
-      if (tens > 99) {
+    }
+    if(tens > 9){
+        appendTens.innerHTML=tens;
+    }
+    if(tens > 99){
         console.log("seconds");
         seconds++;
-        appendSeconds.innerHTML = "0" + seconds;
+        appendSeconds.innerHTML= "0" + seconds;
         tens = 0;
-        appendTens.innerHTML = "0" + 0;
-      }
-      
-      if (seconds > 9){
+        appendTens.innerHTML="0"+ 0;
+    } 
+    if(seconds>9){
         appendSeconds.innerHTML = seconds;
-      }
-    
+       }
     }
-    
-  
-  }
-  </script>
-</body>
+}
+        </script>
+        <div class="stopper">
+            <h1>StopWatch</h1>
+            <h2>Vanilla Javascript Stopwatch</h2>
+            <p><span id="seconds">00</span>:<span id="tens">00</span></p> 
+            <button id="button-start">start</button>
+            <button id="button-stop">stop</button>
+            <button id="button-reset">reset</button>
+        </div>
+    </body>
 </html>
