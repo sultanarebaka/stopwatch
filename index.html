@@ -71,8 +71,37 @@ button{
 button:hover{
     background: white;
     color: black;
-    transition: all .6s ease-in-out;
+    transition: all .5s ease-in-out;
  
+}
+button:nth-last-child(2){
+    background:#f8f988;
+    border:1px solid white;
+}
+button:nth-last-child(2):hover{
+  background: white;
+  transition: all;
+}
+button:nth-last-child(1){
+  background: #FF7000;
+  border:1px solid white;
+  
+}
+button:nth-last-child(1):hover{
+  background: white;
+}
+@media screen and (min-width:480px){
+  body{
+    background-position: center;
+    align-items: center;
+    flex-direction: column;
+    height:4vh;
+  }
+}
+ button:hover{
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
 }
     </style>
     <body>
